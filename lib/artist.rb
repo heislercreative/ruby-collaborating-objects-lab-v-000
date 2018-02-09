@@ -19,11 +19,10 @@ class Artist
   
   def add_song(song)
     @songs << song
-    binding.pry
   end
   
   def self.find_or_create_by_name(name)
-    self.create(name) unless self.all.find{|artist| artist.name == name}
+    self.all.find{|artist| artist.name == name} || self.create(name)
   end
   
   def self.create(name)
